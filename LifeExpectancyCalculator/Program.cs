@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LifeExpectancyCalculator.BusinessLogicLayer;
+using System;
 
 namespace LifeExpectancyCalculator
 {
@@ -6,7 +7,10 @@ namespace LifeExpectancyCalculator
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var multipleChoice = new MultipleChoiceLogic();
+            multipleChoice.GetAge();
+            multipleChoice.DisplayQuestion();
+            Console.ReadLine();
         }
     }
 }

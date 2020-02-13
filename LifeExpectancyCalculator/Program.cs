@@ -7,9 +7,14 @@ namespace LifeExpectancyCalculator
     {
         static void Main(string[] args)
         {
+            var calculatorLogic = new CalculatorLogic();
+            calculatorLogic.Start();
             var multipleChoice = new MultipleChoiceLogic();
-            multipleChoice.GetAge();
             multipleChoice.DisplayQuestion();
+            var yesorno = new YesOrNoLogic();
+            yesorno.DisplayQuestion();
+            calculatorLogic.CalculateLifeExpectancy();
+
             Console.ReadLine();
         }
     }

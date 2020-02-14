@@ -11,7 +11,7 @@ namespace LifeExpectancyCalculator.BusinessLogicLayer
         public List<YesOrNoQuestions> YesOrNoQuestionsList { get; set; }
         //public int answer;
         public string Answer { get; set; }
-
+        public int answer;
         public List<string> AnswersList = new List<string> { };
 
         public YesOrNoLogic()
@@ -26,9 +26,7 @@ namespace LifeExpectancyCalculator.BusinessLogicLayer
 
         public int DisplayQuestion()
         {
-
-
-            int value;
+            char value;
             foreach (var questions in YesOrNoQuestionsList)
             {
                 var countFitness = Convert.ToInt32(questions.YesOrNoQuestionsTypes.Equals(TypesOfCategories.Fitness));
@@ -41,7 +39,7 @@ namespace LifeExpectancyCalculator.BusinessLogicLayer
                         Answer = Console.ReadLine();
                         AnswersList.Add(Answer);
                     }
-                    while (!int.TryParse(Answer, out value))
+                    while (!char.TryParse(Answer, out value) || !value.Equals('Y') && !value.Equals('N') && value != null)
                     {
                         Console.WriteLine("Oopsey! Wrong input, please could you enter that again?");
                         Answer = Console.ReadLine();
@@ -60,7 +58,7 @@ namespace LifeExpectancyCalculator.BusinessLogicLayer
                         Answer = Console.ReadLine();
                         AnswersList.Add(Answer);
                     }
-                    while (!int.TryParse(Answer, out value))
+                    while (!char.TryParse(Answer, out value) || !value.Equals('Y') && !value.Equals('N') && value != null)
                     {
                         Console.WriteLine("Oopsey! Wrong input, please could you enter that again?");
                         Answer = Console.ReadLine();
@@ -69,8 +67,6 @@ namespace LifeExpectancyCalculator.BusinessLogicLayer
                     countHealth++;
                 }
             }
-
-            // AnswersList.ForEach(Console.WriteLine);
             return 0;
         }
 

@@ -1,6 +1,7 @@
 ﻿using LifeExpectancyCalculator.DataAccessLayer;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace LifeExpectancyCalculator.BusinessLogicLayer
@@ -42,7 +43,8 @@ namespace LifeExpectancyCalculator.BusinessLogicLayer
             }
             country = Console.ReadLine();
             AverageExpectancyByCountry result;
-            while (!Enum.TryParse(country, out result))
+           // bool b = country.All(char.IsLetter);
+            while (!Enum.TryParse(country, out result) || country.All(char.IsLetter) == false && country != null)
             {
                 Console.WriteLine("Oopsey! Wrong input, please could you enter that again?");
                 country = Console.ReadLine();
@@ -74,14 +76,14 @@ namespace LifeExpectancyCalculator.BusinessLogicLayer
                 Console.WriteLine("Oopsey! Wrong input, please could you enter that again?");
                 ageAsString = Console.ReadLine();
             }
-            Console.WriteLine($"You are {age} years old");
             return age;
         }
 
         public int CalculateLifeExpectancy()
         {
             var multipleChoiceLogic = new MultipleChoiceLogic();
-            int expectancy = avglifeexpectancy - age - multipleChoiceLogic.GetAnswer();
+            var yesornoChoiceLogic = new YesOrNoLogic();
+            int expectancy = avglifeexpectancy - age - multipleChoiceLogic.GetAnswer() - yesornoChoiceLogic.GetAnswer();
             Console.WriteLine($"You are expected to live till the age of: {expectancy}");
             return 0;
         }

@@ -20,11 +20,9 @@ namespace LifeExpectancyCalculator.BusinessLogicLayer
             {
                 new MultipleChoiceQuestions(1,"How often do you exercise? (1). Daily  (2). Weekly  (3). Monthly  (4). Never",TypesOfCategories.Fitness,QuestionCategory.Exercise),
                 new MultipleChoiceQuestions(1,"How long do you usually exercise for? (1). 1 hour  (2). 30 mins  (3). 15 mins  (4). 5mins",TypesOfCategories.Fitness,QuestionCategory.Exercise),
-                new MultipleChoiceQuestions(3,"What is your blood pressure like? 1. Normal 2. Medicated 3. High 4. Not Sure", TypesOfCategories.Health,QuestionCategory.BloodPressure),
-                new MultipleChoiceQuestions(4,"What is your Cholesterol like? 1. Normal 2. Medicated 3. Not Sure", TypesOfCategories.Health,QuestionCategory.Cholesterol)
+                new MultipleChoiceQuestions(3,"What is your blood pressure like? (1). Normal  (2). Medicated  (3). High  (4). Not Sure", TypesOfCategories.Health,QuestionCategory.BloodPressure),
+                new MultipleChoiceQuestions(4,"What is your Cholesterol like? (1). Normal (2). Medicated  (3). High  (4). Not Sure", TypesOfCategories.Health,QuestionCategory.Cholesterol)
             };
-
-
         }
 
         public int DisplayQuestion()
@@ -44,7 +42,7 @@ namespace LifeExpectancyCalculator.BusinessLogicLayer
                         Answer = Console.ReadLine();
                         AnswersList.Add(Answer);
                     }
-                    while (!int.TryParse(Answer, out value))
+                    while (!int.TryParse(Answer, out value) || !value.Equals(1) && !value.Equals(2) && !value.Equals(3) && !value.Equals(4) && value != null)
                     {
                         Console.WriteLine("Oopsey! Wrong input, please could you enter that again?");
                         Answer = Console.ReadLine();
@@ -63,8 +61,8 @@ namespace LifeExpectancyCalculator.BusinessLogicLayer
                         Answer = Console.ReadLine();
                         AnswersList.Add(Answer);
                     }
-                    while (!int.TryParse(Answer, out value))
-                    {
+                    while (!int.TryParse(Answer, out value) || !value.Equals(1) && !value.Equals(2) && !value.Equals(3) && !value.Equals(4) && value != null)
+                        {
                         Console.WriteLine("Oopsey! Wrong input, please could you enter that again?");
                         Answer = Console.ReadLine();
                         AnswersList.Add(Answer);
@@ -72,8 +70,6 @@ namespace LifeExpectancyCalculator.BusinessLogicLayer
                     countHealth++;
                 }
             }
-
-            // AnswersList.ForEach(Console.WriteLine);
             return 0;
         }
 
